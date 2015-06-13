@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150613013436) do
+ActiveRecord::Schema.define(version: 20150613202546) do
 
-  create_table "categorias", force: :cascade do |t|
+  create_table "clasificaciones", force: :cascade do |t|
     t.string  "nombre",      limit: 255,                       null: false
     t.string  "imagen",      limit: 255
     t.text    "descripcion", limit: 4294967295
@@ -58,12 +58,12 @@ ActiveRecord::Schema.define(version: 20150613013436) do
     t.integer "numero_de_productos",       limit: 4,                            default: 0,     null: false
     t.boolean "tiene_numero_de_paquetes",  limit: 1,                            default: false, null: false
     t.integer "numero_de_paquetes",        limit: 4,                            default: 0,     null: false
-    t.integer "categoria_id",              limit: 4,                                            null: false
+    t.integer "clasificacion_id",          limit: 4,                                            null: false
     t.decimal "puntuacion",                            precision: 5,  scale: 2, default: 0.0,   null: false
     t.decimal "numero_personas",                       precision: 5,  scale: 2, default: 0.0,   null: false
   end
 
-  add_index "productos", ["categoria_id"], name: "fk_Producto_Categoria1_idx", using: :btree
+  add_index "productos", ["clasificacion_id"], name: "fk_Producto_Categoria1_idx", using: :btree
   add_index "productos", ["codigo_de_barras"], name: "codigoDeBarras_UNIQUE", unique: true, using: :btree
   add_index "productos", ["marca_id"], name: "fk_Productos_Marca1_idx", using: :btree
 
@@ -124,7 +124,7 @@ ActiveRecord::Schema.define(version: 20150613013436) do
   add_foreign_key "listas", "productos", column: "productos_id", name: "fk_lista_de_compras_Productos1"
   add_foreign_key "listas", "usuarios", column: "usuarios_id", name: "fk_Lista_de_compras_Usuarios1"
   add_foreign_key "marcas", "empresas", column: "Empresas_id", name: "fk_Marca_Empresas1"
-  add_foreign_key "productos", "categorias", name: "fk_Producto_Categoria1"
+  add_foreign_key "productos", "clasificaciones", column: "clasificacion_id", name: "fk_Producto_Categoria1"
   add_foreign_key "productos", "marcas", name: "fk_Productos_Marca1"
   add_foreign_key "puntuaciones", "productos", column: "productos_id", name: "fk_puntuacions_productos1"
   add_foreign_key "puntuaciones", "usuarios", column: "usuarios_id", name: "fk_puntuacions_usuarios1"
