@@ -5,6 +5,7 @@ class ProductosController < ApplicationController
   # GET /productos.json
   def index
     @productos = Producto.all
+    @producto = Producto.new
   end
 
   # GET /productos/1
@@ -69,6 +70,7 @@ class ProductosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def producto_params
-      params[:producto]
+      params.require(:producto).permit(:marca_id,:descripcion,:codigo_de_barras,:tiene_peso,:peso,:tiene_longitud,:longitud,:tiene_volumen,:volumen,:unidades,:tiene_numero_de_productos,:numero_de_productos, :tiene_numero_de_paquetes,:numero_de_paquetes,:clasificacion_id)
+      #params[:producto]
     end
 end

@@ -1,17 +1,96 @@
-<%= form_for(@producto) do |f| %>
-  <% if @producto.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@producto.errors.count, "error") %> prohibited this producto from being saved:</h2>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <%= form_for(@producto) do |f| %>
+    <% if @producto.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@producto.errors.count, "error") %> prohibited this producto from being saved:</h2>
 
-      <ul>
-      <% @producto.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+          <ul>
+          <% @producto.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Datos del producto</h4>
+      </div>
+      <div class="modal-body">
+        
+          
+
+          <div class="field">
+            <%= f.label "Marca del producto" %>
+            <%= f.select :marca_id, Marca.all.map{|p| [p.nombre,p.id]}  %>
+          </div>
+
+          <div class="field">
+            <%= f.label "Descripción del producto" %><br>
+            <%= f.text_area :descripcion  %>
+          </div>
+          
+          <div class="field">
+            <%= f.label "Código de barras" %>
+            <%= f.text_field :codigo_de_barras %>
+          </div>
+
+          <div class="field">
+            <%= f.label "¿El contenido neto del empaque es medido por peso?" %>
+            <%= f.check_box :tiene_peso %>
+          </div>
+          
+          <div class="field">
+            <%= f.label "¿Cuál es el peso?" %>
+            <%= f.text_field :peso %>
+          </div>
+
+          <div class="field">
+            <%= f.label "¿El contenido neto está medido por volumen?" %>
+            <%= f.check_box :tiene_volumen %>
+          </div>
+          
+          <div class="field">
+            <%= f.label "¿Cuál es el volumen?" %>
+            <%= f.text_field :volumen %>
+          </div>
+
+          <div class="field">
+            <%= f.label "Unidades (Gramos, kilogramos, litro, mililitros, galones, etc) " %>
+            <%= f.text_field :unidades %>
+          </div>  
+
+          <div class="field">
+            <%= f.label "¿Es un paque que tiene código de barras exterior y sus productos que tiene internamente no poseen códigos de barras?" %>
+            <%= f.text_field :numero_de_productos %>
+          </div> 
+
+          <div class="field">
+            <%= f.label "¿Es un paque que tiene código de barras exterior y sus productos que tiene internamente poseen códigos de barras?" %>
+            <%= f.text_field :numero_de_paquetes %>
+          </div>   
+
+          <div class="field">
+            <%= f.label "¿En que categoría consideras debería estar este producto" %>
+            <%= f.select :clasificacion_id, Clasificacione.all.map {|p| [p.nombre,p.id] }  %>
+          </div>   
+
+          
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        
+          
+            <%= f.submit 'Guardar', :class => "btn btn-primary" %>
+         
+   
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit %>
+    <% end %>
   </div>
-<% end %>
+</div>
+
+
