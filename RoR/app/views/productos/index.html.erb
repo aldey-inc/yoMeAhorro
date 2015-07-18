@@ -11,7 +11,14 @@
 
   <tbody>
     <% @productos.each do |producto| %>
-      <tr>
+      <tr id="<%=producto.id%>" class="<%=producto.marca.id%>" style="display: none;">
+        <td><%= producto.codigo_de_barras %></td>
+        <td><%= producto.descripcion %></td>
+        <td>
+        <% if producto.tiene_peso == 1 %>
+          <%= producto.peso %>
+        <% end %>
+        </td>
         <td><%= link_to 'Show', producto %></td>
         <td><%= link_to 'Edit', edit_producto_path(producto) %></td>
         <td><%= link_to 'Destroy', producto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -32,3 +39,35 @@
 
 
 <%= link_to 'New Producto', new_producto_path %>
+
+<ul>
+  <% @productos.each do |producto| %>
+      <li >
+        <%= check_box_tag 'producto_ids[]', producto.id %>
+        <%= h producto.descripcion -%>
+      </li>
+  <% end %>
+</ul>
+<button id="Ocultar">Ocultar </button>
+<button id="Mostrar">Mostrar </button>
+<script>
+  $(document).ready(function(){
+      $("#Ocultar").click(function(){
+        $(".1").hide();
+      });
+      $("#Mostrar").click(function(){
+        $(".1").show();
+      });
+      $('input[type="checkbox"]').click(function(){
+        if($(this).attr("value")=="4"){
+            $("#4").toggle();
+        }
+        if($(this).attr("value")=="3"){
+            $("#3").toggle();
+        }
+        if($(this).attr("value")=="6"){
+            $("#6").toggle();
+        }
+    });
+  });
+</script>

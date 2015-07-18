@@ -24,7 +24,7 @@
 
           <div class="field">
             <%= f.label "Marca del producto" %>
-            <%= f.select :marca_id, Marca.all.map{|p| [p.nombre,p.id]}  %>
+            <%= f.select :marca_id, Marca.all.map{|p| [p.nombre,p.id]},{prompt: "Selecciona la marca"}  %>
           </div>
 
           <div class="field">

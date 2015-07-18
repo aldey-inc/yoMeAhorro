@@ -1,0 +1,27 @@
+<%= form_for(@registro) do |f| %>
+  <% if @registro.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@registro.errors.count, "error") %> prohibited this registro from being saved:</h2>
+
+      <ul>
+      <% @registro.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Cantidad Comprada"%>
+    <%= f.text_field :cantidad%>    
+  </div>
+  <div class="field">
+    <%= f.label "producto" %>
+
+    <%= f.select :producto_id, Producto.all.map{|p| [p.codigo_de_barras, Marca.find(p.marca_id).nombre, p.id,p.descripcion] }%>
+
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
