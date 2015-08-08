@@ -5,6 +5,8 @@
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 	<%= csrf_meta_tags %>
+  <!-- Font Awesome Icons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />    
 </head>
 <body class="skin-blue sidebar-mini">
     <div class="wrapper">
@@ -230,7 +232,8 @@
       <div class="content-wrapper">
         	<!-- Content Header (Page header) -->
 
-		<%= yield %>
+
+		
         <section class="content-header">
           <h1>
             Page Header
@@ -244,9 +247,10 @@
 
         <!-- Main content -->
         <section class="content">
-
+          
+          
           <!-- Your Page Content Here -->
-
+          <%= yield %>
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
 
@@ -257,7 +261,7 @@
           Anything you want
         </div>
         <!-- Default to the left -->
-        <strong>Copyright &copy; 2015 <a href="#">Company</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2015 <a href="#">Aldey. Inc.</a>.</strong> Derechos Reservados.
       </footer>
 
       <!-- Control Sidebar -->
@@ -329,6 +333,8 @@
           Both of these plugins are recommended to enhance the
           user experience. Slimscroll is required when using the
           fixed layout. -->
+
+     
   </body>
 	
 
