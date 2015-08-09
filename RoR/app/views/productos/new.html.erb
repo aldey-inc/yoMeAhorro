@@ -1,3 +1,49 @@
+<div class="col-md-6 col-md-offset-3">
+  <div class="box box-info">
+    <div class="box-header with-border">
+      <h3 class="box-title">Dar de Alta producto</h3>
+    </div><!-- /.box-header -->
+    <!-- form start -->
+    <%= form_for @producto, :html => { :class => "form-horizontal", :multipart=> true} do |f| %>
+      <div class="box-body">
+        <div class="form-group">
+          <%= f.label :marca_id, "Marca", :class =>"col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.select :marca_id, Marca.all.map{|p| [p.nombre,p.id]}, :class => "form-control" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :descripcion,"Descripción", :class => "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.text_field :descripcion, :class => "form-control" %>
+          </div>
+        </div> 
+        <div class="form-group">
+          <%= f.label :codigo_de_barras,"Código", :class => "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.text_field :codigo_de_barras, :class => "form-control" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :tiene_peso,"¿El contenido neto del empaque es medido por peso?", :class => "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.check_box :tiene_peso, :class => "form-control" %>
+          </div>
+        </div> 
+        <div class="form-group">
+          <%= f.label :imagen, "Imágen",:class=> "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.file_field :imagen,  accept: 'image/jpeg,image/gif,image/png', :class => "form-control" %>
+          </div>
+        </div>   
+      </div><!-- box-body -->
+      <div class="box-footer">
+          <%= f.submit "Crear",:class => "btn btn-info pull-right" %>
+      </div><!-- /.box-footer -->             
+    <% end %>                
+  </div><!-- /.box -->
+</div>
+
 <h1>New Producto</h1>
 
 <%= render 'form' %>

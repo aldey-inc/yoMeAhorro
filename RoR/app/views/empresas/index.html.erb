@@ -1,5 +1,5 @@
-        <!-- Main content -->
-        <section class="content">
+    <!-- Main content -->
+    <section class="content">
 		  <div class="row">
             <div class="col-xs-12">
               <div class="box">
@@ -32,8 +32,8 @@
 	                      <td><%= empresa.nombre %></td>
 	                      <td><%= empresa.direccion %></td>
 	                      <td><%= empresa.descripcion %></td>	                      
-	                      <td> <span class="badge bg-yellow">##</span> </td>
-	                      <td> <span class="badge bg-light-blue">##</span> </td>
+	                      <td> <span class="badge bg-yellow"><%= empresa.marcas.length %></span> </td>
+	                      <td> <span class="badge bg-light-blue"> ## </span> </td>
 	                    </tr>
                     <% end %>                    
                   </table>

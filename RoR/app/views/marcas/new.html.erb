@@ -1,0 +1,33 @@
+<div class="col-md-6 col-md-offset-3">
+  <div class="box box-warning">
+    <div class="box-header with-border">
+      <h3 class="box-title">Dar de Alta Marca</h3>
+    </div><!-- /.box-header -->
+    <!-- form start -->
+    <%= form_for @marca, :html => { :class => "form-horizontal", :multipart=> true} do |f| %>
+      <div class="box-body">
+        <div class="form-group">
+          <%= f.label :empresa_id, "Empresa", :class =>"col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.select :empresa_id, Empresa.all.map{|p| [p.nombre,p.id]}, :class => "form-control" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :nombre,"Nombre", :class => "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.text_field :nombre, :class => "form-control" %>
+          </div>
+        </div>  
+        <div class="form-group">
+          <%= f.label :imagen, "Imágen",:class=> "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.file_field :imagen,  accept: 'image/jpeg,image/gif,image/png', :class => "form-control" %>
+          </div>
+        </div>   
+      </div><!-- box-body -->
+      <div class="box-footer">
+          <%= f.submit "Crear",:class => "btn btn-info pull-right" %>
+      </div><!-- /.box-footer -->             
+    <% end %>                
+  </div><!-- /.box -->
+</div>

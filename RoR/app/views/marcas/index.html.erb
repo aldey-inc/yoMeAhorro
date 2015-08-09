@@ -1,0 +1,35 @@
+<section class="content">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Lista de todos las Marcas</h3>
+          <div class="box-tools pull-right">
+            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+          </div>
+        </div><!-- /.box-header -->
+        <div class="box-body">
+          <ul class="products-list product-list-in-box">
+            <% @marcas.each do |marca|%>
+            <li class="item">
+              <div class="product-img">
+                <%= image_tag(marca.imagen.url, size: "75x50") if marca.imagen? %>
+              </div>
+              <div class="product-info">
+                <a href="javascript::;" class="product-title"><%= marca.nombre %><span class="label label-warning pull-right">###</span></a>
+                <span class="product-description">
+                  <%= marca.empresa.nombre %>
+                </span>
+              </div>
+            </li><!-- /.item -->
+            <% end %>
+          </ul>
+        </div><!-- /.box-body -->
+        <div class="box-footer text-center">
+          <a href="javascript::;" class="uppercase">View All Products</a>
+        </div><!-- /.box-footer -->
+      </div>
+    </div>
+  </div> <!-- /.row -->
+</div> <!-- /.content -->

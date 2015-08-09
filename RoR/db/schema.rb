@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150613202546) do
+ActiveRecord::Schema.define(version: 20150809001750) do
 
   create_table "clasificaciones", force: :cascade do |t|
     t.string  "nombre",      limit: 255,                       null: false
@@ -28,20 +28,21 @@ ActiveRecord::Schema.define(version: 20150613202546) do
   end
 
   create_table "listas", force: :cascade do |t|
-    t.integer  "usuarios_id",  limit: 4, null: false
-    t.integer  "productos_id", limit: 4, null: false
-    t.datetime "listas_at",              null: false
+    t.integer  "usuario_id",  limit: 4, null: false
+    t.integer  "producto_id", limit: 4, null: false
+    t.datetime "listas_at",             null: false
   end
 
-  add_index "listas", ["productos_id"], name: "fk_lista_de_compras_Productos1_idx", using: :btree
-  add_index "listas", ["usuarios_id"], name: "fk_Lista_de_compras_Usuarios1_idx", using: :btree
+  add_index "listas", ["producto_id"], name: "fk_lista_de_compras_Productos1_idx", using: :btree
+  add_index "listas", ["usuario_id"], name: "fk_Lista_de_compras_Usuarios1_idx", using: :btree
 
   create_table "marcas", force: :cascade do |t|
-    t.string  "nombre",      limit: 255, null: false
-    t.integer "Empresas_id", limit: 4,   null: false
+    t.string  "nombre",     limit: 255, null: false
+    t.integer "empresa_id", limit: 4,   null: false
+    t.string  "imagen",     limit: 255
   end
 
-  add_index "marcas", ["Empresas_id"], name: "fk_Marca_Empresas1_idx", using: :btree
+  add_index "marcas", ["empresa_id"], name: "fk_Marca_Empresas1_idx", using: :btree
 
   create_table "productos", force: :cascade do |t|
     t.integer "marca_id",                  limit: 4,                                            null: false
@@ -68,14 +69,14 @@ ActiveRecord::Schema.define(version: 20150613202546) do
   add_index "productos", ["marca_id"], name: "fk_Productos_Marca1_idx", using: :btree
 
   create_table "puntuaciones", force: :cascade do |t|
-    t.decimal "valor",                           precision: 5, scale: 2, default: 5.0, null: false
-    t.text    "comentario",   limit: 4294967295
-    t.integer "usuarios_id",  limit: 4,                                                null: false
-    t.integer "productos_id", limit: 4,                                                null: false
+    t.decimal "valor",                          precision: 5, scale: 2, default: 5.0, null: false
+    t.text    "comentario",  limit: 4294967295
+    t.integer "usuario_id",  limit: 4,                                                null: false
+    t.integer "producto_id", limit: 4,                                                null: false
   end
 
-  add_index "puntuaciones", ["productos_id"], name: "fk_puntuacions_productos1_idx", using: :btree
-  add_index "puntuaciones", ["usuarios_id"], name: "fk_puntuacions_usuarios1_idx", using: :btree
+  add_index "puntuaciones", ["producto_id"], name: "fk_puntuacions_productos1_idx", using: :btree
+  add_index "puntuaciones", ["usuario_id"], name: "fk_puntuacions_usuarios1_idx", using: :btree
 
   create_table "registros", force: :cascade do |t|
     t.decimal  "cantidad",              precision: 15, scale: 3,  default: 0.0
@@ -121,13 +122,13 @@ ActiveRecord::Schema.define(version: 20150613202546) do
     t.integer  "reputacion",      limit: 4,                             default: 5,   null: false
   end
 
-  add_foreign_key "listas", "productos", column: "productos_id", name: "fk_lista_de_compras_Productos1"
-  add_foreign_key "listas", "usuarios", column: "usuarios_id", name: "fk_Lista_de_compras_Usuarios1"
-  add_foreign_key "marcas", "empresas", column: "Empresas_id", name: "fk_Marca_Empresas1"
+  add_foreign_key "listas", "productos", name: "fk_lista_de_compras_Productos1"
+  add_foreign_key "listas", "usuarios", name: "fk_Lista_de_compras_Usuarios1"
+  add_foreign_key "marcas", "empresas", name: "fk_Marca_Empresas1"
   add_foreign_key "productos", "clasificaciones", column: "clasificacion_id", name: "fk_Producto_Categoria1"
   add_foreign_key "productos", "marcas", name: "fk_Productos_Marca1"
-  add_foreign_key "puntuaciones", "productos", column: "productos_id", name: "fk_puntuacions_productos1"
-  add_foreign_key "puntuaciones", "usuarios", column: "usuarios_id", name: "fk_puntuacions_usuarios1"
+  add_foreign_key "puntuaciones", "productos", name: "fk_puntuacions_productos1"
+  add_foreign_key "puntuaciones", "usuarios", name: "fk_puntuacions_usuarios1"
   add_foreign_key "registros", "productos", name: "fk_Registro_Producto1"
   add_foreign_key "registros", "tiendas", name: "fk_Registro_Tienda1"
   add_foreign_key "registros", "usuarios", name: "fk_Registro_Usuario1"

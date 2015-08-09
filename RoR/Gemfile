@@ -1,4 +1,11 @@
 source 'https://rubygems.org'
+# Gemas para poder paginar 
+gem 'will_paginate','3.0.7'
+gem 'bootstrap-will_paginate','0.0.10'
+# Gema para agregar imagenes al formulario
+gem 'carrierwave','0.10.0'
+# Gema para redimensionar las imagenes
+gem 'mini_magick','3.8.0'
 gem 'tzinfo-data'
 gem 'mysql2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

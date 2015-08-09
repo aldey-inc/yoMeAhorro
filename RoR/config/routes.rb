@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   resources :productos
   resources :registros
 
-  resources :empresas, only: [:new,:update,:index]
+  resources :empresas, only: [:new,:update,:index,:create]
+  resources :marcas, only: [:new,:create,:index]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

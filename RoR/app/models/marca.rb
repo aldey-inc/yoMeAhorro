@@ -1,3 +1,6 @@
 class Marca < ActiveRecord::Base
-	has_many :productos
+	mount_uploader :imagen, ImagenUploader
+  has_many :productos
+  belongs_to :empresa
+ 
 end

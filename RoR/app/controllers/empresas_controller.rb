@@ -1,19 +1,28 @@
 class EmpresasController < ApplicationController
 
-	def new
+  def new
+    @empresa=Empresa.new
+  end
 
-	end
+  def create
+    @empresa = Empresa.new(empresa_params)
+    
+    if @empresa.save
+      redirect_to empresas_path
+      #poner un flash que todo salió de manera correcata
+    else
+      #poner algo para avisar que algo salio de manera incorrecta
+      render 'new'
+    end
+  end
 
-	def create
-	end
+  def index
+    @empresas= Empresa.all
+  end
 
-	def index
-		@empresas= Empresa.all
-	end
+  private
 
-	private
-
-	def empresa_param
-		params.require(:empresa).permit()
-	end
+  def empresa_params
+    params.require(:empresa).permit(:nombre, :descripcion, :direccion)
+  end
 end
