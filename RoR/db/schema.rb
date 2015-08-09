@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150809001750) do
+ActiveRecord::Schema.define(version: 20150809152732) do
 
   create_table "clasificaciones", force: :cascade do |t|
     t.string  "nombre",      limit: 255,                       null: false
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20150809001750) do
     t.integer "clasificacion_id",          limit: 4,                                            null: false
     t.decimal "puntuacion",                            precision: 5,  scale: 2, default: 0.0,   null: false
     t.decimal "numero_personas",                       precision: 5,  scale: 2, default: 0.0,   null: false
+    t.string  "imagen",                    limit: 255
   end
 
   add_index "productos", ["clasificacion_id"], name: "fk_Producto_Categoria1_idx", using: :btree

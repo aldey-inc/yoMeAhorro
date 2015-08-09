@@ -30,6 +30,62 @@
             <%= f.check_box :tiene_peso, :class => "form-control" %>
           </div>
         </div> 
+        
+        <div class="form-group">
+          <%= f.label :tiene_volumen,"¿El contenido neto está medido por volumen?", :class => "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.check_box :tiene_volumen, :class => "form-control" %>
+          </div>
+        </div> 
+        
+        <div class="form-group">
+          <%= f.label :tiene_volumen,"¿El contenido neto está medido por volumen?", :class => "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.check_box :tiene_volumen, :class => "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :tiene_longitud,"¿El contenido neto está medido por longitud?", :class => "col-sm-2 control-label" %>
+          <div class="col-sm-10">
+            <%= f.check_box :tiene_longitud, :class => "form-control" %>
+          </div>
+        </div>
+        <!-- Falta poner aquí que si es medido en metros-->
+
+        <div class="form-group">
+          <%= f.label :unidades,"Unidades: g, kg, l, ml, gal, m, cm, etc", :class => "col-sm-2 control-label" %>
+          <div class=."col-sm-10">
+            <%= f.text_field :unidades, :class => "form-control" %>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <%= f.label :tiene_numero_de_paquetes,"Algunas galletas o artículos vienen en un empaque exterior, pero al abrir ese empaque existen paquetes más pequeños ¿Este producto tiene esta característica?", :class => "col-sm-2 control-label" %>
+          <div class=."col-sm-10">
+            <%= f.text_field :tiene_numero_de_paquetes, :class => "form-control" %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :numero_de_paquetes,"Número de paquetes", :class => "col-sm-2 control-label" %>
+          <div class=."col-sm-10">
+            <%= f.text_field :numero_de_paquetes, :class => "form-control" %>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <%= f.label :tiene_numero_de_productos,"Algunas tostadas o articulos vienen en un empaque, pero al abrirlo se puede tomarse de manera directa una pieza ¿Este producto tiene esta característica?", :class => "col-sm-2 control-label" %>
+          <div class=."col-sm-10">
+            <%= f.text_field :tiene_numero_de_productos, :class => "form-control" %>
+          </div>
+        </div>
+
+        <div class="field">
+            <%= f.label :numero_de_productos,"¿Cuantas piezas hay en su interior sin importar si hay o no paquetes internos?" %>
+            <%= f.text_field :numero_de_productos %>
+        </div> 
+        
+
         <div class="form-group">
           <%= f.label :imagen, "Imágen",:class=> "col-sm-2 control-label" %>
           <div class="col-sm-10">
@@ -43,9 +99,10 @@
     <% end %>                
   </div><!-- /.box -->
 </div>
-
+<!--
 <h1>New Producto</h1>
 
 <%= render 'form' %>
 
 <%= link_to 'Back', productos_path %>
+-->
